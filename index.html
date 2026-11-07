@@ -326,6 +326,216 @@
     <span id="toastMsg">已複製到剪貼簿！</span>
   </div>
 
+  <!-- Floating Customer Service Trigger (Cute Robot) -->
+  <div class="fixed bottom-6 right-6 z-40 flex items-center gap-2.5">
+    <!-- Speech Bubble Tooltip -->
+    <div id="chatBadge" class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900/90 border border-indigo-500/40 text-[11px] font-medium text-indigo-300 shadow-xl backdrop-blur-md animate-bounce cursor-pointer" onclick="toggleChat()">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+      我是客服小智，有問題問我！
+    </div>
+
+    <!-- Main Robot Button -->
+    <button 
+      id="chatToggleBtn" 
+      onclick="toggleChat()" 
+      class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-purple-600 p-2 shadow-xl shadow-indigo-600/40 border border-indigo-400/30 hover:scale-105 active:scale-95 transition-all duration-200 relative group flex items-center justify-center"
+      title="開啟 AI 智能客服"
+    >
+      <!-- Animated Pulsing Ring -->
+      <span class="absolute -inset-1 rounded-2xl bg-indigo-500/30 blur-sm group-hover:bg-indigo-500/50 transition -z-10"></span>
+      
+      <!-- Vector Code-Drawn Little Robot Avatar -->
+      <div class="w-10 h-10">
+        <svg viewBox="0 0 100 100" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Antenna -->
+          <line x1="50" y1="22" x2="50" y2="7" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="50" cy="7" r="5" fill="#38bdf8">
+            <animate attributeName="fill" values="#38bdf8;#818cf8;#38bdf8" dur="2s" repeatCount="indefinite"/>
+          </circle>
+          <!-- Ears -->
+          <rect x="16" y="38" width="6" height="14" rx="3" fill="#6366f1"/>
+          <rect x="78" y="38" width="6" height="14" rx="3" fill="#6366f1"/>
+          <!-- Head Outer -->
+          <rect x="22" y="18" width="56" height="52" rx="16" fill="url(#botHeadGrad)" stroke="#a5b4fc" stroke-width="2.5"/>
+          <!-- Face Screen -->
+          <rect x="28" y="26" width="44" height="36" rx="10" fill="#090d16" stroke="#334155" stroke-width="1.5"/>
+          <!-- Glowing Eyes with Blink Animation -->
+          <ellipse cx="40" cy="40" rx="4.5" ry="5.5" fill="#38bdf8">
+            <animate attributeName="ry" values="5.5;5.5;0.8;5.5" keyTimes="0;0.9;0.95;1" dur="3.5s" repeatCount="indefinite"/>
+          </ellipse>
+          <ellipse cx="60" cy="40" rx="4.5" ry="5.5" fill="#38bdf8">
+            <animate attributeName="ry" values="5.5;5.5;0.8;5.5" keyTimes="0;0.9;0.95;1" dur="3.5s" repeatCount="indefinite"/>
+          </ellipse>
+          <!-- Cheeks -->
+          <circle cx="34" cy="51" r="2.5" fill="#f43f5e" opacity="0.75"/>
+          <circle cx="66" cy="51" r="2.5" fill="#f43f5e" opacity="0.75"/>
+          <!-- Smile -->
+          <path d="M43 50 Q50 56 57 50" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <!-- Body/Collar -->
+          <path d="M35 72 L65 72 L72 90 L28 90 Z" fill="url(#botBodyGrad)" stroke="#a5b4fc" stroke-width="1.5"/>
+          <circle cx="50" cy="81" r="3" fill="#38bdf8"/>
+          <!-- Gradients -->
+          <defs>
+            <linearGradient id="botHeadGrad" x1="22" y1="18" x2="78" y2="70" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#1e1b4b"/>
+              <stop offset="1" stop-color="#3730a3"/>
+            </linearGradient>
+            <linearGradient id="botBodyGrad" x1="28" y1="72" x2="72" y2="90" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#312e81"/>
+              <stop offset="1" stop-color="#4f46e5"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <!-- Online Badge Dot -->
+      <span class="absolute top-1 right-1 w-3 h-3 bg-emerald-400 border-2 border-slate-900 rounded-full"></span>
+    </button>
+  </div>
+
+  <!-- Customer Service Chat Box Widget -->
+  <div 
+    id="chatWidget" 
+    class="fixed bottom-24 right-4 sm:right-6 z-50 w-[92vw] sm:w-[390px] h-[550px] max-h-[82vh] hidden flex-col rounded-3xl bg-slate-900/95 border border-indigo-500/40 shadow-2xl backdrop-blur-2xl overflow-hidden transition-all duration-300"
+  >
+    <!-- Chat Header -->
+    <div class="px-4 py-3 bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950/80 border-b border-slate-800 flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl bg-slate-800 border border-indigo-500/40 flex items-center justify-center p-1 relative">
+          <svg viewBox="0 0 100 100" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="50" y1="22" x2="50" y2="7" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="50" cy="7" r="5" fill="#38bdf8"/>
+            <rect x="22" y="18" width="56" height="52" rx="16" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+            <rect x="28" y="26" width="44" height="36" rx="10" fill="#090d16" stroke="#334155" stroke-width="1.5"/>
+            <ellipse cx="40" cy="40" rx="4.5" ry="5.5" fill="#38bdf8"/>
+            <ellipse cx="60" cy="40" rx="4.5" ry="5.5" fill="#38bdf8"/>
+            <circle cx="34" cy="51" r="2.5" fill="#f43f5e" opacity="0.75"/>
+            <circle cx="66" cy="51" r="2.5" fill="#f43f5e" opacity="0.75"/>
+            <path d="M43 50 Q50 56 57 50" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          </svg>
+          <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-400 border border-slate-900 rounded-full"></span>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold text-white flex items-center gap-1.5">
+            小智 🤖 AI 客服
+            <span class="text-[9px] font-normal px-1.5 py-0.2 rounded bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">Claude大腦</span>
+          </h4>
+          <p class="text-[10px] text-emerald-400 flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> 在線為您解答網站疑問
+          </p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1">
+        <!-- Settings Button (GAS URL) -->
+        <button onclick="toggleChatSettings()" class="text-slate-400 hover:text-indigo-300 p-1.5 rounded-lg hover:bg-slate-800 transition" title="後端 GAS 設定">
+          <i class="fa-solid fa-gear text-xs"></i>
+        </button>
+        <!-- Minimize/Close Button -->
+        <button onclick="toggleChat()" class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition" title="關閉視窗">
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- GAS Backend Settings Dropdown (Toggled) -->
+    <div id="gasSettingsPanel" class="hidden px-4 py-3 bg-slate-950 border-b border-indigo-500/30 text-xs transition-all">
+      <div class="flex items-center justify-between mb-1.5">
+        <span class="font-semibold text-slate-200 flex items-center gap-1.5">
+          <i class="fa-solid fa-link text-indigo-400"></i> Google Apps Script (GAS) 網址
+        </span>
+        <span id="gasStatusBadge" class="text-[10px] text-amber-400 bg-amber-950/60 px-2 py-0.5 rounded border border-amber-800/40">待設定</span>
+      </div>
+      <p class="text-[11px] text-slate-400 mb-2">請貼上您部署的 GAS Web App 網址以啟用 OpenRouter 思考功能：</p>
+      <div class="flex gap-2">
+        <input 
+          type="url" 
+          id="gasUrlInput" 
+          placeholder="https://script.google.com/macros/s/.../exec"
+          class="flex-1 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+        >
+        <button onclick="saveGasUrl()" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-medium text-xs whitespace-nowrap transition">
+          儲存
+        </button>
+      </div>
+    </div>
+
+    <!-- Chat Messages Container -->
+    <div id="chatMessages" class="flex-1 p-4 overflow-y-auto space-y-3.5 text-xs scrollbar-thin">
+      <!-- Greeting from Robot -->
+      <div class="flex items-start gap-2.5">
+        <div class="w-7 h-7 rounded-lg bg-indigo-950 border border-indigo-500/40 flex-shrink-0 flex items-center justify-center p-0.5">
+          <svg viewBox="0 0 100 100" class="w-full h-full" fill="none">
+            <line x1="50" y1="22" x2="50" y2="7" stroke="#cbd5e1" stroke-width="4"/>
+            <circle cx="50" cy="7" r="5" fill="#38bdf8"/>
+            <rect x="22" y="18" width="56" height="52" rx="16" fill="#1e1b4b" stroke="#818cf8" stroke-width="2.5"/>
+            <rect x="28" y="26" width="44" height="36" rx="10" fill="#090d16"/>
+            <ellipse cx="40" cy="40" rx="4.5" ry="5.5" fill="#38bdf8"/>
+            <ellipse cx="60" cy="40" rx="4.5" ry="5.5" fill="#38bdf8"/>
+            <path d="M43 50 Q50 56 57 50" stroke="#38bdf8" stroke-width="2.5" fill="none"/>
+          </svg>
+        </div>
+        <div class="bg-slate-800/90 border border-slate-700/60 rounded-2xl rounded-tl-sm p-3 text-slate-200 leading-relaxed max-w-[85%] shadow-md">
+          <p class="font-medium text-white mb-1.5">您好！我是小智 🤖</p>
+          <p>很高興為您服務！有任何關於本站 AI 工具推薦、使用技巧或網站功能的問題，都可以問我喔！</p>
+        </div>
+      </div>
+
+      <!-- Quick Suggestion Chips -->
+      <div class="pl-9 flex flex-wrap gap-1.5 pt-1" id="quickChips">
+        <button onclick="sendQuickMessage('推薦寫程式的 AI 工具')" class="text-[11px] bg-indigo-950/70 hover:bg-indigo-900 border border-indigo-700/50 text-indigo-300 px-2.5 py-1 rounded-full transition active:scale-95">
+          💻 推薦寫程式 AI
+        </button>
+        <button onclick="sendQuickMessage('Prompt 助手怎麼使用？')" class="text-[11px] bg-indigo-950/70 hover:bg-indigo-900 border border-indigo-700/50 text-indigo-300 px-2.5 py-1 rounded-full transition active:scale-95">
+          📑 Prompt 助手教學
+        </button>
+        <button onclick="sendQuickMessage('有哪些完全免費的生圖工具？')" class="text-[11px] bg-indigo-950/70 hover:bg-indigo-900 border border-indigo-700/50 text-indigo-300 px-2.5 py-1 rounded-full transition active:scale-95">
+          🎨 免費生圖工具
+        </button>
+        <button onclick="sendQuickMessage('我想一鍵生成 PPT 該選哪個？')" class="text-[11px] bg-indigo-950/70 hover:bg-indigo-900 border border-indigo-700/50 text-indigo-300 px-2.5 py-1 rounded-full transition active:scale-95">
+          ⚡ 一鍵生成 PPT
+        </button>
+      </div>
+
+      <!-- Typing Indicator (Hidden by default) -->
+      <div id="typingIndicator" class="hidden flex items-start gap-2.5">
+        <div class="w-7 h-7 rounded-lg bg-indigo-950 border border-indigo-500/40 flex-shrink-0 flex items-center justify-center p-0.5">
+          <svg viewBox="0 0 100 100" class="w-full h-full" fill="none">
+            <rect x="22" y="18" width="56" height="52" rx="16" fill="#1e1b4b"/>
+            <ellipse cx="40" cy="40" rx="4.5" ry="5.5" fill="#38bdf8"/>
+            <ellipse cx="60" cy="40" rx="4.5" ry="5.5" fill="#38bdf8"/>
+          </svg>
+        </div>
+        <div class="bg-slate-800/80 border border-slate-700/60 rounded-2xl rounded-tl-sm px-3.5 py-2.5 text-slate-400 flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-bounce"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-bounce [animation-delay:0.2s]"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-bounce [animation-delay:0.4s]"></span>
+          <span class="text-[10px] text-slate-400 ml-1">小智思考中...</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat Input Area -->
+    <div class="p-3 bg-slate-950/90 border-t border-slate-800">
+      <form onsubmit="handleChatSubmit(event)" class="flex items-center gap-2">
+        <input 
+          type="text" 
+          id="chatInput" 
+          placeholder="詢問網站功能或推薦工具..." 
+          autocomplete="off"
+          class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        >
+        <button 
+          type="submit" 
+          id="chatSendBtn"
+          class="w-9 h-9 rounded-xl bg-indigo-600 hover:bg-indigo-500 active:scale-95 text-white flex items-center justify-center transition shadow-md shadow-indigo-600/30 flex-shrink-0"
+        >
+          <i class="fa-solid fa-paper-plane text-xs"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer class="relative z-10 border-t border-slate-800/80 bg-slate-950/80 mt-16 py-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs text-slate-500 space-y-2">
@@ -909,8 +1119,237 @@ Provide the final prompt ready to paste into Discord.`,
       }, 2600);
     }
 
+    // ==========================================
+    // Customer Service Chatbot Logic (小智 🤖)
+    // ==========================================
+    let isChatOpen = false;
+    let chatHistory = [];
+    let gasUrl = localStorage.getItem('ai_hub_gas_url') || '';
+
+    function initChat() {
+      const input = document.getElementById('gasUrlInput');
+      const badge = document.getElementById('gasStatusBadge');
+      if (gasUrl) {
+        if (input) input.value = gasUrl;
+        if (badge) {
+          badge.textContent = '已連接 GAS';
+          badge.className = 'text-[10px] text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800/40';
+        }
+      }
+    }
+
+    function toggleChat() {
+      const widget = document.getElementById('chatWidget');
+      const badge = document.getElementById('chatBadge');
+      isChatOpen = !isChatOpen;
+
+      if (isChatOpen) {
+        widget.classList.remove('hidden');
+        widget.classList.add('flex');
+        if (badge) badge.classList.add('hidden');
+        scrollChatToBottom();
+        setTimeout(() => document.getElementById('chatInput')?.focus(), 150);
+      } else {
+        widget.classList.add('hidden');
+        widget.classList.remove('flex');
+        if (badge) badge.classList.remove('hidden');
+      }
+    }
+
+    function toggleChatSettings() {
+      const panel = document.getElementById('gasSettingsPanel');
+      panel.classList.toggle('hidden');
+      if (!panel.classList.contains('hidden')) {
+        document.getElementById('gasUrlInput').focus();
+      }
+    }
+
+    function saveGasUrl() {
+      const input = document.getElementById('gasUrlInput');
+      const val = input.value.trim();
+      const badge = document.getElementById('gasStatusBadge');
+
+      if (!val) {
+        gasUrl = '';
+        localStorage.removeItem('ai_hub_gas_url');
+        badge.textContent = '待設定';
+        badge.className = 'text-[10px] text-amber-400 bg-amber-950/60 px-2 py-0.5 rounded border border-amber-800/40';
+        showToast('已清除 GAS 網址，切換至展示模式', 'fa-solid fa-info');
+        return;
+      }
+
+      if (!val.startsWith('https://script.google.com/macros/s/')) {
+        showToast('請輸入正確的 Google Apps Script 部署網址', 'fa-solid fa-triangle-exclamation');
+        return;
+      }
+
+      gasUrl = val;
+      localStorage.setItem('ai_hub_gas_url', gasUrl);
+      badge.textContent = '已連接 GAS';
+      badge.className = 'text-[10px] text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800/40';
+      showToast('GAS 後端網址儲存成功！', 'fa-solid fa-check');
+      toggleChatSettings();
+    }
+
+    function sendQuickMessage(text) {
+      document.getElementById('chatInput').value = text;
+      handleChatSubmit(new Event('submit'));
+    }
+
+    async function handleChatSubmit(e) {
+      if (e) e.preventDefault();
+      const input = document.getElementById('chatInput');
+      const text = input.value.trim();
+      if (!text) return;
+
+      input.value = '';
+      appendUserMessage(text);
+      chatHistory.push({ role: 'user', content: text });
+
+      // Hide quick chips after first user message
+      const quickChips = document.getElementById('quickChips');
+      if (quickChips) quickChips.classList.add('hidden');
+
+      showTyping(true);
+
+      if (gasUrl) {
+        // Send request to Google Apps Script Web App
+        try {
+          const response = await fetch(gasUrl, {
+            method: 'POST',
+            body: JSON.stringify({
+              message: text,
+              history: chatHistory.slice(-6)
+            })
+          });
+
+          const data = await response.json();
+          showTyping(false);
+
+          if (data && data.success && data.reply) {
+            appendBotMessage(data.reply);
+            chatHistory.push({ role: 'assistant', content: data.reply });
+          } else {
+            const err = data.error || '後端伺服器回應異常';
+            appendBotMessage(`抱歉，OpenRouter 處理時發生問題：${err}`);
+          }
+        } catch (error) {
+          showTyping(false);
+          appendBotMessage(`⚠️ 連線至 GAS 失敗 (${error.message})。\n\n請確認您的 GAS 部署設定為「所有人 (Anyone)」皆可存取。以下先由小智為您提供本地解答：\n\n` + generateLocalAnswer(text));
+        }
+      } else {
+        // Fallback local instant response mode
+        setTimeout(() => {
+          showTyping(false);
+          const localReply = generateLocalAnswer(text);
+          appendBotMessage(localReply);
+          chatHistory.push({ role: 'assistant', content: localReply });
+        }, 700);
+      }
+    }
+
+    function generateLocalAnswer(question) {
+      const q = question.toLowerCase();
+      if (q.includes('程式') || q.includes('代碼') || q.includes('code') || q.includes('寫網站')) {
+        return `💻 寫程式與開發強烈推薦以下幾款工具：\n\n1. **Cursor**：目前全球最受推崇的 AI 程式碼編輯器，全專案感知、Tab 即時除錯重構。\n2. **v0 by Vercel**：適合用對話直接生成現代化 React 與 Tailwind 前端介面。\n3. **Bolt.new**：直接在瀏覽器建置、執行並部署全端專案！\n\n您可以在上方點擊「💻 程式開發」分類快速造訪官網喔！`;
+      }
+      if (q.includes('prompt') || q.includes('提示詞') || q.includes('助手')) {
+        return `📑 **Prompt 提示詞助手使用方式**：\n\n1. 滑動到頁面中下方的「Prompt 快速生成器」區塊。\n2. 選擇您需要的任務類型（如代碼審查、社群文案、Debug、繪圖等）。\n3. 輸入主題關鍵字並選擇語氣。\n4. 系統將即時產生專業級 Prompt，點擊「一鍵複製」即可貼到 ChatGPT 或 Claude 使用！`;
+      }
+      if (q.includes('免費') || q.includes('free') || q.includes('不用錢')) {
+        return `🆓 本站收錄了許多完全免費或提供慷慨免費額度的工具：\n\n- **DeepSeek**：完全免費的高性能推理模型 R1，解題與寫代碼極強！\n- **Google Gemini**：免費支援即時聯網、多模態圖文與 YouTube 分析。\n- **ChatPDF**：免費上傳文檔進行提問解讀。\n- **Stable Diffusion**：開源且支援本地離線自由運行！`;
+      }
+      if (q.includes('收藏') || q.includes('儲存') || q.includes('星星')) {
+        return `⭐ **如何使用收藏功能**：\n\n只要在任何 AI 工具卡片的右上角點擊「★」星星圖示，就能將該工具加入收藏！\n接著點擊頂部分類列的「★ 我的收藏」，就能隨時查看您最喜愛的工具，資料會永久保存在您的瀏覽器中喔！`;
+      }
+      if (q.includes('ppt') || q.includes('簡報') || q.includes('投影片')) {
+        return `⚡ 製作簡報大推 **Gamma App**！只要輸入一句主題或貼上大綱，Gamma 就能在 30 秒內自動排版並生成極具現代感的完整簡報、網頁與文檔，職場效率神兵！`;
+      }
+      if (q.includes('圖') || q.includes('畫') || q.includes('image') || q.includes('logo')) {
+        return `🎨 圖像設計推薦：\n- **Midjourney**：藝術質感與光影細節最強。\n- **Ideogram**：精準排版英文文字與海報 Logo 設計最佳。\n- **Flux.1**：照片級真實質感與手部細節無可挑剔！`;
+      }
+      return `您好！我是 AI Tools Hub 智能客服小智 🤖。\n\n您詢問的是關於：「${question}」\n本站精選收錄了超過 20 款全球頂尖 AI 工具，並具備即時搜尋、分類篩選、個人收藏與 Prompt 生成器等功能。\n\n💡 *溫馨提示*：點擊上方 ⚙️ 齒輪填入您的 Google Apps Script 網址，即可啟用 OpenRouter (Claude Haiku) 的完整即時深度推理大腦喔！`;
+    }
+
+    function appendUserMessage(text) {
+      const container = document.getElementById('chatMessages');
+      const div = document.createElement('div');
+      div.className = 'flex justify-end';
+      div.innerHTML = `
+        <div class="bg-gradient-to-r from-indigo-600 to-indigo-700 text-white rounded-2xl rounded-tr-sm px-3.5 py-2.5 max-w-[85%] leading-relaxed shadow-md break-words">
+          ${escapeHtml(text)}
+        </div>
+      `;
+      container.appendChild(div);
+      scrollChatToBottom();
+    }
+
+    function appendBotMessage(text) {
+      const container = document.getElementById('chatMessages');
+      const div = document.createElement('div');
+      div.className = 'flex items-start gap-2.5';
+
+      // Format markdown-like text
+      const formatted = formatMarkdown(text);
+
+      div.innerHTML = `
+        <div class="w-7 h-7 rounded-lg bg-indigo-950 border border-indigo-500/40 flex-shrink-0 flex items-center justify-center p-0.5">
+          <svg viewBox="0 0 100 100" class="w-full h-full" fill="none">
+            <line x1="50" y1="22" x2="50" y2="7" stroke="#cbd5e1" stroke-width="4"/>
+            <circle cx="50" cy="7" r="5" fill="#38bdf8"/>
+            <rect x="22" y="18" width="56" height="52" rx="16" fill="#1e1b4b" stroke="#818cf8" stroke-width="2.5"/>
+            <rect x="28" y="26" width="44" height="36" rx="10" fill="#090d16"/>
+            <ellipse cx="40" cy="40" rx="4.5" ry="5.5" fill="#38bdf8"/>
+            <ellipse cx="60" cy="40" rx="4.5" ry="5.5" fill="#38bdf8"/>
+            <path d="M43 50 Q50 56 57 50" stroke="#38bdf8" stroke-width="2.5" fill="none"/>
+          </svg>
+        </div>
+        <div class="bg-slate-800/90 border border-slate-700/60 rounded-2xl rounded-tl-sm p-3 text-slate-200 leading-relaxed max-w-[85%] shadow-md break-words space-y-1">
+          ${formatted}
+        </div>
+      `;
+      container.appendChild(div);
+      scrollChatToBottom();
+    }
+
+    function showTyping(show) {
+      const indicator = document.getElementById('typingIndicator');
+      if (show) {
+        indicator.classList.remove('hidden');
+        scrollChatToBottom();
+      } else {
+        indicator.classList.add('hidden');
+      }
+    }
+
+    function scrollChatToBottom() {
+      const container = document.getElementById('chatMessages');
+      if (container) {
+        setTimeout(() => {
+          container.scrollTop = container.scrollHeight;
+        }, 50);
+      }
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+
+    function formatMarkdown(str) {
+      let html = escapeHtml(str);
+      // bold **text**
+      html = html.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white font-semibold">$1</strong>');
+      // newlines
+      html = html.replace(/\n\n/g, '<div class="h-2"></div>');
+      html = html.replace(/\n/g, '<br>');
+      return html;
+    }
+
     // Start
-    window.addEventListener('DOMContentLoaded', init);
+    window.addEventListener('DOMContentLoaded', () => {
+      init();
+      initChat();
+    });
   </script>
 </body>
 </html>
