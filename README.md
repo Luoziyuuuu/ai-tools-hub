@@ -1,6 +1,6 @@
-# 🤖 AI Tools Hub 2026 (AI 工具導航站) + 智能客服小智
+# 🥕 AI Tools Hub 2026 (AI 工具導航站) + 智能客服小蘿蔔
 
-> 精選 2026 最新最強大的人工智慧工具導航站，涵蓋對話、寫作、繪圖、程式開發、影音創作與辦公效率工具。右下角內建基於 **Google Apps Script** 與 **OpenRouter (Claude Haiku)** 的智能客服小機器人。
+> 精選 2026 最新最強大的人工智慧工具導航站，涵蓋對話、寫作、繪圖、程式開發、影音創作與辦公效率工具。支援**自訂新增 AI 工具**，右下角內建基於 **Google Apps Script** 與 **OpenRouter (Claude Haiku)** 的元氣「小蘿蔔 🥕」智能客服。
 
 🌐 **線上公開網址 (Live Website)**:  
 👉 [https://luoziyuuuu.github.io/ai-tools-hub/](https://luoziyuuuu.github.io/ai-tools-hub/)
@@ -10,9 +10,21 @@
 
 ---
 
-## 🤖 右下角智能客服（小智）架構說明
+## ✨ 核心亮點
 
-- **視覺外觀**：完全使用純 SVG 程式代碼繪製可愛小機器人大頭，具備眨眼動效與在線燈號。
+1. **🥕 客服圖案換成可愛小蘿蔔**：純 SVG 代碼繪製元氣綠葉蘿蔔頭，具備眨眼動態與在線狀態。
+2. **➕ 完整支援新增工具功能**：
+   - 頂部導航列「**＋ 新增工具**」按鈕
+   - 工具列表最下方「**＋ 新增你喜愛的 AI 工具**」虛線卡片
+   - 支援選擇代表圖示（🤖, 🥕, 💻, 🎨, 🎵, ⚡）、分類、標籤、費用模型
+   - 本地儲存（LocalStorage）即時生效，卡片支援一鍵刪除 🗑️ 管理！
+3. **🤖 後端架構**：Google Apps Script (GAS) Web App (`Code.gs`) 連接 OpenRouter (Claude Haiku)。
+
+---
+
+## 🥕 右下角智能客服（小蘿蔔）架構說明
+
+- **視覺外觀**：完全使用純 SVG 程式代碼繪製可愛元氣蘿蔔，頭頂綠葉、眨眼動效與在線燈號。
 - **前端介面**：嵌入 GitHub Pages 靜態頁面，支援自訂提問、快捷問題按鈕、思考動效與 Markdown 排版。
 - **後端架構**：Google Apps Script (GAS) Web App (`Code.gs`)。
 - **大腦模型**：OpenRouter API (`anthropic/claude-haiku-5.5` / `anthropic/claude-3.5-haiku`)。
