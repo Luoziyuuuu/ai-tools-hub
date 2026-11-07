@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 工具導航站 | AI Tools Hub 2026</title>
+  <meta name="description" content="精選 2026 最新最強大的人工智慧工具導航站，涵蓋對話、寫作、繪圖、程式開發、影音創作與辦公效率工具。">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+            },
+            darkbg: '#090d16',
+            cardbg: '#111827',
+          },
+          animation: {
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', 'Noto Sans TC', sans-serif;
+      background-color: #080c14;
+    }
+    .gradient-glow {
+      background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.25) 0%, rgba(168, 85, 247, 0.15) 35%, rgba(8, 12, 20, 0) 70%);
+    }
+    .card-glass {
+      background: rgba(17, 24, 39, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card-glass:hover {
+      border-color: rgba(99, 102, 241, 0.5);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px -10px rgba(99, 102, 241, 0.3);
+    }
+    .badge-gradient {
+      background: linear-gradient(135deg, #6366f1, #a855f7);
+    }
+  </style>
+</head>
+<body class="text-slate-100 min-h-screen flex flex-col selection:bg-indigo-500 selection:text-white">
+
+  <!-- Ambient Glow Background -->
+  <div class="fixed inset-0 pointer-events-none gradient-glow z-0"></div>
+
+  <!-- Navigation Bar -->
+  <header class="relative z-10 border-b border-slate-800/80 bg-slate-950/60 backdrop-blur-md sticky top-0">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl badge-gradient flex items-center justify-center text-white shadow-lg shadow-indigo-500/30 font-bold text-xl">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+        </div>
+        <div>
+          <h1 class="text-lg font-extrabold tracking-tight bg-gradient-to-r from-white via-indigo-100 to-indigo-300 bg-clip-text text-transparent">
+            AI Tools Hub
+          </h1>
+          <p class="text-xs text-slate-400">精選人工智慧工具指南</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="#prompt-helper" class="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-indigo-300 bg-indigo-950/60 border border-indigo-800/60 rounded-lg hover:bg-indigo-900/50 transition">
+          <i class="fa-solid fa-terminal text-indigo-400"></i> Prompt 助手
+        </a>
+        <button onclick="openSubmitModal()" class="inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-medium text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg shadow-sm shadow-indigo-500/20 transition active:scale-95">
+          <i class="fa-solid fa-plus"></i> 推薦工具
+        </button>
+        <a href="https://github.com/Luoziyuuuu/ai-tools-hub" target="_blank" class="text-slate-400 hover:text-white transition p-2 text-lg" title="GitHub Repo">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="relative z-10 flex-grow">
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 mb-6 animate-pulse-slow">
+        <span class="w-2 h-2 rounded-full bg-indigo-400 animate-ping"></span>
+        2026 最新收錄 · 發現你的 AI 超能力
+      </div>
+      <h2 class="text-3xl sm:text-5xl font-black tracking-tight text-white mb-4">
+        探索 <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">最實用 AI 工具</span> 庫
+      </h2>
+      <p class="max-w-2xl mx-auto text-sm sm:text-base text-slate-400 mb-8 leading-relaxed">
+        匯集全球頂尖對話、繪圖、程式開發、影音創作與辦公效率 AI 工具。一鍵直達官網、收藏常用工具，讓工作效率倍增。
+      </p>
+
+      <!-- Search & Filters Container -->
+      <div class="max-w-3xl mx-auto">
+        <!-- Search Bar -->
+        <div class="relative mb-6">
+          <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+          <input 
+            type="text" 
+            id="searchInput" 
+            oninput="handleSearch()"
+            placeholder="搜尋 AI 工具名稱、特色或關鍵字 (例：ChatGPT, 寫程式, 繪圖, 免費)..." 
+            class="w-full pl-11 pr-24 py-3.5 bg-slate-900/90 border border-slate-700/80 rounded-2xl text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm shadow-xl shadow-black/40 backdrop-blur-sm"
+          >
+          <div class="absolute inset-y-0 right-0 pr-3 flex items-center gap-2">
+            <span id="resultCount" class="text-xs text-slate-400 font-medium bg-slate-800 px-2 py-1 rounded-md">24 個</span>
+            <button id="clearSearchBtn" onclick="clearSearch()" class="hidden text-slate-400 hover:text-white p-1">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Category Pills -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none justify-start sm:justify-center text-xs" id="categoryTabs">
+          <button onclick="setCategory('all')" class="cat-btn active px-4 py-2 rounded-xl font-medium transition whitespace-nowrap bg-indigo-600 text-white shadow-md shadow-indigo-600/30">
+            全部工具 <span class="ml-1 opacity-75" id="allCount">24</span>
+          </button>
+          <button onclick="setCategory('chat')" class="cat-btn px-4 py-2 rounded-xl font-medium transition whitespace-nowrap bg-slate-900/90 text-slate-400 hover:text-slate-200 border border-slate-800">
+            💬 對話寫作
+          </button>
+          <button onclick="setCategory('code')" class="cat-btn px-4 py-2 rounded-xl font-medium transition whitespace-nowrap bg-slate-900/90 text-slate-400 hover:text-slate-200 border border-slate-800">
+            💻 程式開發
+          </button>
+          <button onclick="setCategory('image')" class="cat-btn px-4 py-2 rounded-xl font-medium transition whitespace-nowrap bg-slate-900/90 text-slate-400 hover:text-slate-200 border border-slate-800">
+            🎨 圖像設計
+          </button>
+          <button onclick="setCategory('video')" class="cat-btn px-4 py-2 rounded-xl font-medium transition whitespace-nowrap bg-slate-900/90 text-slate-400 hover:text-slate-200 border border-slate-800">
+            🎬 影音創作
+          </button>
+          <button onclick="setCategory('productivity')" class="cat-btn px-4 py-2 rounded-xl font-medium transition whitespace-nowrap bg-slate-900/90 text-slate-400 hover:text-slate-200 border border-slate-800">
+            ⚡ 辦公效率
+          </button>
+          <button onclick="setCategory('favorites')" class="cat-btn px-4 py-2 rounded-xl font-medium transition whitespace-nowrap bg-slate-900/90 text-amber-400 hover:text-amber-300 border border-slate-800">
+            ★ 我的收藏 <span class="ml-1" id="favCount">0</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tools Grid Section -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div id="toolsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <!-- Rendered by JavaScript -->
+      </div>
+
+      <!-- Empty State -->
+      <div id="emptyState" class="hidden text-center py-20">
+        <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-500 text-2xl">
+          <i class="fa-solid fa-search"></i>
+        </div>
+        <h3 class="text-base font-semibold text-slate-300 mb-1">找不到符合條件的 AI 工具</h3>
+        <p class="text-xs text-slate-500 mb-4">請嘗試更換關鍵字或重設分類</p>
+        <button onclick="resetFilters()" class="px-4 py-2 text-xs font-medium text-indigo-400 bg-indigo-950/50 border border-indigo-800/50 rounded-lg hover:bg-indigo-900/40">
+          清除搜尋篩選
+        </button>
+      </div>
+    </section>
+
+    <!-- Interactive Mini-Tool: AI Prompt Generator -->
+    <section id="prompt-helper" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="card-glass rounded-3xl p-6 sm:p-10 border border-indigo-500/30 relative overflow-hidden">
+        <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/20 text-indigo-300 mb-2">
+              <i class="fa-solid fa-bolt"></i> 內建實用工具
+            </div>
+            <h3 class="text-2xl font-bold text-white">AI 萬用提示詞 (Prompt) 快速生成器</h3>
+            <p class="text-xs sm:text-sm text-slate-400">不知道怎麼跟 AI 提問？選取目標任務，一秒產生高品質提問 Prompt！</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div class="space-y-4">
+            <div>
+              <label class="block text-xs font-medium text-slate-400 mb-1.5">1. 選擇任務類型</label>
+              <select id="promptTask" onchange="generatePrompt()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <option value="code_review">💻 程式碼審查與重構 (Code Review)</option>
+                <option value="write_article">✍️ 專業社群行銷文案撰寫</option>
+                <option value="debug">🐛 Bug 排查與解決方案</option>
+                <option value="midjourney">🎨 Midjourney 繪圖提示詞 (英文)</option>
+                <option value="translate">🌐 專業雙語翻譯與在地化潤飾</option>
+                <option value="summary">📑 長文重點摘要與行動清單</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-medium text-slate-400 mb-1.5">2. 輸入你的主題或關鍵字</label>
+              <input 
+                type="text" 
+                id="promptTopic" 
+                oninput="generatePrompt()"
+                value="建立一個乾淨簡約的網頁" 
+                placeholder="例如：撰寫一個登入系統、行銷咖啡的文案..." 
+                class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              >
+            </div>
+
+            <div>
+              <label class="block text-xs font-medium text-slate-400 mb-1.5">3. 語氣與受眾風格</label>
+              <select id="promptTone" onchange="generatePrompt()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <option value="professional">精準專業 (資深專家視角)</option>
+                <option value="creative">生動有趣 (吸引眼球、引發共鳴)</option>
+                <option value="concise">簡潔精煉 (條列要點、直奔核心)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="lg:col-span-2 flex flex-col justify-between bg-slate-950/80 rounded-2xl p-5 border border-slate-800">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-indigo-400 flex items-center gap-1.5">
+                  <i class="fa-solid fa-code"></i> 生成結果預覽
+                </span>
+                <button onclick="copyGeneratedPrompt()" class="text-xs px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg transition active:scale-95 flex items-center gap-1.5">
+                  <i class="fa-regular fa-copy"></i> 一鍵複製 Prompt
+                </button>
+              </div>
+              <pre id="promptOutput" class="text-xs text-slate-300 whitespace-pre-wrap font-mono leading-relaxed bg-slate-900/90 p-4 rounded-xl border border-slate-800 min-h-[140px] select-all"></pre>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-500">
+              <span>💡 複製後直接貼到 ChatGPT、Claude 或 DeepSeek 即可獲得最佳回答。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Submit Tool Modal -->
+  <div id="submitModal" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-700/80 rounded-2xl max-w-lg w-full p-6 shadow-2xl relative">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-800 mb-4">
+        <h3 class="text-lg font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-paper-plane text-indigo-400"></i> 推薦或新增 AI 工具
+        </h3>
+        <button onclick="closeSubmitModal()" class="text-slate-400 hover:text-white p-1 text-lg">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="addToolForm" onsubmit="handleSubmitedTool(event)" class="space-y-3.5">
+        <div>
+          <label class="block text-xs font-medium text-slate-300 mb-1">工具名稱 *</label>
+          <input type="text" id="newToolName" required placeholder="例如：Claude 3.7 Sonnet" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">分類 *</label>
+            <select id="newToolCategory" required class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              <option value="chat">對話寫作</option>
+              <option value="code">程式開發</option>
+              <option value="image">圖像設計</option>
+              <option value="video">影音創作</option>
+              <option value="productivity">辦公效率</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">費用標籤</label>
+            <select id="newToolBadge" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              <option value="免費試用">免費試用</option>
+              <option value="完全免費">完全免費</option>
+              <option value="付費訂閱">付費訂閱</option>
+              <option value="開源推薦">開源推薦</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium text-slate-300 mb-1">官網網址 (URL) *</label>
+          <input type="url" id="newToolUrl" required placeholder="https://..." class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium text-slate-300 mb-1">簡短介紹說明 *</label>
+          <textarea id="newToolDesc" rows="2" required placeholder="一句話介紹它的主要功能與亮點..." class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium text-slate-300 mb-1">標籤關鍵字 (以逗號隔開)</label>
+          <input type="text" id="newToolTags" placeholder="程式助手, 繁體中文, 支援外掛" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+        </div>
+
+        <div class="pt-2 flex justify-end gap-2">
+          <button type="button" onclick="closeSubmitModal()" class="px-4 py-2 text-xs text-slate-300 bg-slate-800 hover:bg-slate-700 rounded-lg transition">
+            取消
+          </button>
+          <button type="submit" class="px-5 py-2 text-xs font-medium text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg transition shadow-md shadow-indigo-600/30">
+            確認送出
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-16 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-slate-900 border border-indigo-500/50 shadow-2xl text-xs text-white">
+    <i class="fa-solid fa-circle-check text-indigo-400" id="toastIcon"></i>
+    <span id="toastMsg">已複製到剪貼簿！</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="relative z-10 border-t border-slate-800/80 bg-slate-950/80 mt-16 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs text-slate-500 space-y-2">
+      <div class="flex items-center justify-center gap-4 text-slate-400">
+        <a href="#prompt-helper" class="hover:text-indigo-400 transition">Prompt 助手</a>
+        <span>•</span>
+        <button onclick="openSubmitModal()" class="hover:text-indigo-400 transition">新增工具</button>
+        <span>•</span>
+        <a href="https://github.com/Luoziyuuuu/ai-tools-hub" target="_blank" class="hover:text-indigo-400 transition">GitHub 原始碼</a>
+      </div>
+      <p>© 2026 AI Tools Hub · 構建於 GitHub Pages · 自動化持續部署</p>
+    </div>
+  </footer>
+
+  <script>
+    // Initial AI Tools Data
+    const initialTools = [
+      {
+        id: 'chatgpt',
+        name: 'ChatGPT',
+        category: 'chat',
+        badge: '免費試用',
+        icon: 'fa-robot',
+        color: 'from-emerald-500 to-teal-600',
+        url: 'https://chat.openai.com',
+        desc: 'OpenAI 研發的多模態 AI 助手，支援深度推理、GPT-4o 視覺識別與即時語音對話。',
+        tags: ['熱門', '全方位', '語音互動', '寫作']
+      },
+      {
+        id: 'claude',
+        name: 'Claude 3.7',
+        category: 'chat',
+        badge: '推薦',
+        icon: 'fa-brain',
+        color: 'from-amber-500 to-orange-600',
+        url: 'https://claude.ai',
+        desc: 'Anthropic 出品，具備頂級程式碼編寫能力、超長上下文與混合思考推理模式。',
+        tags: ['寫程式最強', '長文本', '細膩文風']
+      },
+      {
+        id: 'gemini',
+        name: 'Google Gemini',
+        category: 'chat',
+        badge: '免費試用',
+        icon: 'fa-gem',
+        color: 'from-blue-500 to-indigo-600',
+        url: 'https://gemini.google.com',
+        desc: 'Google 原生多模態模型，無縫整合 Google 生態系、YouTube 影片解析與即時聯網。',
+        tags: ['Google整合', '多模態', '百萬Token']
+      },
+      {
+        id: 'deepseek',
+        name: 'DeepSeek',
+        category: 'chat',
+        badge: '完全免費',
+        icon: 'fa-bolt-lightning',
+        color: 'from-cyan-500 to-blue-600',
+        url: 'https://chat.deepseek.com',
+        desc: '開源架構突破性推理模型 R1，數學運算、邏輯推導與程式代碼極度出色，性價比之王。',
+        tags: ['深度思考', '數學解題', '高CP值']
+      },
+      {
+        id: 'perplexity',
+        name: 'Perplexity AI',
+        category: 'chat',
+        badge: '免費試用',
+        icon: 'fa-magnifying-glass-chart',
+        color: 'from-teal-500 to-emerald-700',
+        url: 'https://www.perplexity.ai',
+        desc: '次世代 AI 搜索引擎，即時抓取全球網路資料並標註來源文獻，學術與查證首選。',
+        tags: ['即時搜尋', '學術研究', '附來源引注']
+      },
+      {
+        id: 'cursor',
+        name: 'Cursor',
+        category: 'code',
+        badge: '熱門首選',
+        icon: 'fa-laptop-code',
+        color: 'from-purple-500 to-indigo-600',
+        url: 'https://cursor.com',
+        desc: '專為 AI 打造的 VS Code 分支編輯器，全專案代碼理解、自動補全、Tab 自動除錯。',
+        tags: ['程式必備', 'IDE', '全專案感知']
+      },
+      {
+        id: 'v0',
+        name: 'v0 by Vercel',
+        category: 'code',
+        badge: '免費試用',
+        icon: 'fa-cubes',
+        color: 'from-slate-700 to-slate-900',
+        url: 'https://v0.dev',
+        desc: '以自然語言直接生成現代化 React、Tailwind CSS、Next.js 前端網頁元件與整頁佈局。',
+        tags: ['前端生成', 'React', 'Tailwind']
+      },
+      {
+        id: 'copilot',
+        name: 'GitHub Copilot',
+        category: 'code',
+        badge: '付費訂閱',
+        icon: 'fa-code-branch',
+        color: 'from-slate-600 to-zinc-800',
+        url: 'https://github.com/features/copilot',
+        desc: '微軟與 GitHub 聯手打造的程式伴侶，無縫嵌入 VS Code / JetBrains 等主流開發環境。',
+        tags: ['微軟', '自動補全', '企業首選']
+      },
+      {
+        id: 'bolt',
+        name: 'Bolt.new',
+        category: 'code',
+        badge: '免費試用',
+        icon: 'fa-bolt',
+        color: 'from-yellow-500 to-amber-600',
+        url: 'https://bolt.new',
+        desc: '瀏覽器內的即時全端 AI 開發環境，打字即刻建置、測試並一鍵發佈全端應用。',
+        tags: ['免安裝', '全端開發', '即時部署']
+      },
+      {
+        id: 'midjourney',
+        name: 'Midjourney',
+        category: 'image',
+        badge: '付費訂閱',
+        icon: 'fa-palette',
+        color: 'from-fuchsia-500 to-pink-600',
+        url: 'https://www.midjourney.com',
+        desc: '全球公認藝術感與真實質感最強大的 AI 圖像生成系統，廣泛應用於概念藝術與設計。',
+        tags: ['藝術級繪圖', '極致細節', '概念設計']
+      },
+      {
+        id: 'stablediffusion',
+        name: 'Stable Diffusion (WebUI)',
+        category: 'image',
+        badge: '開源免費',
+        icon: 'fa-brush',
+        color: 'from-rose-500 to-red-600',
+        url: 'https://stability.ai',
+        desc: '全球最具影響力的開源生圖模型，支援本機離線運行、LoRA 微調與 ControlNet 精確控制。',
+        tags: ['開源自由', '本機離線', '自訂模型']
+      },
+      {
+        id: 'ideogram',
+        name: 'Ideogram',
+        category: 'image',
+        badge: '免費試用',
+        icon: 'fa-font',
+        color: 'from-orange-500 to-amber-600',
+        url: 'https://ideogram.ai',
+        desc: '最擅長在圖像中精準渲染英文排版與文字字型的生圖工具，海報設計與 LOGO 必備。',
+        tags: ['文字排版', 'Logo設計', '海報製作']
+      },
+      {
+        id: 'flux',
+        name: 'Flux.1',
+        category: 'image',
+        badge: '開源推薦',
+        icon: 'fa-spray-can-sparkles',
+        color: 'from-indigo-500 to-cyan-600',
+        url: 'https://blackforestlabs.ai',
+        desc: 'Black Forest Labs 推出的最新旗艦生圖模型，手指細節完美、照片級真實感突破上限。',
+        tags: ['真實質感', '開源旗艦', '手部精細']
+      },
+      {
+        id: 'runway',
+        name: 'Runway Gen-3',
+        category: 'video',
+        badge: '付費試用',
+        icon: 'fa-film',
+        color: 'from-violet-600 to-purple-800',
+        url: 'https://runwayml.com',
+        desc: '好萊塢級影視生成工具，文字生成高清影片、圖片動態化與專業級相機軌跡控制。',
+        tags: ['電影級影片', '運鏡控制', '特效製作']
+      },
+      {
+        id: 'suno',
+        name: 'Suno AI',
+        category: 'video',
+        badge: '免費試用',
+        icon: 'fa-music',
+        color: 'from-pink-500 to-rose-600',
+        url: 'https://suno.com',
+        desc: '輸入歌詞或一句風格描述，幾秒內生成包含人聲唱腔、完整編曲混音的廣播級完整歌曲。',
+        tags: ['音樂生成', '含人聲編曲', '百萬歌曲']
+      },
+      {
+        id: 'elevenlabs',
+        name: 'ElevenLabs',
+        category: 'video',
+        badge: '免費試用',
+        icon: 'fa-microphone-lines',
+        color: 'from-blue-600 to-cyan-700',
+        url: 'https://elevenlabs.io',
+        desc: '全球擬真度最高的 AI 語音合成與聲音複製平台，支援 29+ 種語言的情感語調調節。',
+        tags: ['語音合成', '聲音複製', '多語言配音']
+      },
+      {
+        id: 'pika',
+        name: 'Pika Art',
+        category: 'video',
+        badge: '免費試用',
+        icon: 'fa-video',
+        color: 'from-amber-600 to-orange-700',
+        url: 'https://pika.art',
+        desc: '具備「擠壓、融化、爆炸」等物理特效的趣味 AI 短影音生成平台，動態表現極具創意。',
+        tags: ['特效影片', '動漫風格', '短影音必備']
+      },
+      {
+        id: 'gamma',
+        name: 'Gamma App',
+        category: 'productivity',
+        badge: '免費試用',
+        icon: 'fa-file-powerpoint',
+        color: 'from-teal-600 to-cyan-600',
+        url: 'https://gamma.app',
+        desc: '告別傳統 PPT，輸入一句話即可自動生成美觀排版、結構嚴謹的簡報、網頁與文檔。',
+        tags: ['一鍵生成PPT', '排版美觀', '職場神兵']
+      },
+      {
+        id: 'notion',
+        name: 'Notion AI',
+        category: 'productivity',
+        badge: '付費訂閱',
+        icon: 'fa-book-bookmark',
+        color: 'from-slate-700 to-slate-900',
+        url: 'https://www.notion.so/product/ai',
+        desc: '直接串接你的個人知識庫，快速重寫、翻譯、會議紀錄整理與筆記問答搜尋。',
+        tags: ['個人知識庫', '會議紀錄', '筆記整合']
+      },
+      {
+        id: 'chatpdf',
+        name: 'ChatPDF',
+        category: 'productivity',
+        badge: '完全免費',
+        icon: 'fa-file-pdf',
+        color: 'from-red-500 to-rose-700',
+        url: 'https://www.chatpdf.com',
+        desc: '上傳任何 PDF 論文、合約或書籍，即可像聊天一樣向文件提問並獲取精準段落解答。',
+        tags: ['論文閱讀', '合約快速分析', '閱讀加速']
+      },
+      {
+        id: 'manus',
+        name: 'Manus AI Agent',
+        category: 'productivity',
+        badge: '熱門話題',
+        icon: 'fa-microchip',
+        color: 'from-emerald-600 to-teal-800',
+        url: 'https://manus.im',
+        desc: '全自主通用 AI 代理人，能自己使用瀏覽器、編寫程式、處理報表並自動交付最終成果。',
+        tags: ['AI Agent', '自主執行', '自動化工作']
+      }
+    ];
+
+    // State
+    let tools = [];
+    let currentCategory = 'all';
+    let searchQuery = '';
+    let favorites = JSON.parse(localStorage.getItem('ai_hub_favs') || '[]');
+
+    // Init
+    function init() {
+      const stored = localStorage.getItem('ai_hub_custom_tools');
+      const customTools = stored ? JSON.parse(stored) : [];
+      tools = [...initialTools, ...customTools];
+      
+      updateCounts();
+      renderTools();
+      generatePrompt();
+    }
+
+    // Category switch
+    function setCategory(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.classList.remove('bg-indigo-600', 'text-white', 'shadow-md', 'shadow-indigo-600/30');
+        btn.classList.add('bg-slate-900/90', 'border', 'border-slate-800');
+        if (cat === 'favorites') {
+          btn.classList.remove('text-amber-400');
+          btn.classList.add('text-slate-400');
+        } else {
+          btn.classList.add('text-slate-400');
+        }
+      });
+
+      const activeBtn = event ? event.currentTarget : document.querySelector(`.cat-btn[onclick*="'${cat}'"]`);
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-slate-900/90', 'text-slate-400', 'border-slate-800');
+        activeBtn.classList.add('bg-indigo-600', 'text-white', 'shadow-md', 'shadow-indigo-600/30');
+      }
+
+      renderTools();
+    }
+
+    // Search input handler
+    function handleSearch() {
+      searchQuery = document.getElementById('searchInput').value.trim().toLowerCase();
+      const clearBtn = document.getElementById('clearSearchBtn');
+      if (searchQuery) {
+        clearBtn.classList.remove('hidden');
+      } else {
+        clearBtn.classList.add('hidden');
+      }
+      renderTools();
+    }
+
+    function clearSearch() {
+      document.getElementById('searchInput').value = '';
+      searchQuery = '';
+      document.getElementById('clearSearchBtn').classList.add('hidden');
+      renderTools();
+    }
+
+    function resetFilters() {
+      clearSearch();
+      setCategory('all');
+    }
+
+    // Toggle Favorite
+    function toggleFav(id, event) {
+      if (event) {
+        event.stopPropagation();
+        event.preventDefault();
+      }
+      if (favorites.includes(id)) {
+        favorites = favorites.filter(item => item !== id);
+        showToast('已自收藏清單移除', 'fa-solid fa-bookmark');
+      } else {
+        favorites.push(id);
+        showToast('已加入我的收藏！', 'fa-solid fa-star text-amber-400');
+      }
+      localStorage.setItem('ai_hub_favs', JSON.stringify(favorites));
+      updateCounts();
+      renderTools();
+    }
+
+    // Copy Tool Link
+    function copyLink(url, name, event) {
+      if (event) {
+        event.stopPropagation();
+        event.preventDefault();
+      }
+      navigator.clipboard.writeText(url).then(() => {
+        showToast(`已複製 ${name} 官網網址！`, 'fa-solid fa-link');
+      });
+    }
+
+    // Update Counts
+    function updateCounts() {
+      document.getElementById('favCount').textContent = favorites.length;
+      document.getElementById('allCount').textContent = tools.length;
+    }
+
+    // Render Tools
+    function renderTools() {
+      const grid = document.getElementById('toolsGrid');
+      const empty = document.getElementById('emptyState');
+      const countLabel = document.getElementById('resultCount');
+
+      let filtered = tools.filter(tool => {
+        // Category filter
+        if (currentCategory === 'favorites') {
+          if (!favorites.includes(tool.id)) return false;
+        } else if (currentCategory !== 'all' && tool.category !== currentCategory) {
+          return false;
+        }
+
+        // Search query filter
+        if (searchQuery) {
+          const matchName = tool.name.toLowerCase().includes(searchQuery);
+          const matchDesc = tool.desc.toLowerCase().includes(searchQuery);
+          const matchTags = tool.tags && tool.tags.some(t => t.toLowerCase().includes(searchQuery));
+          return matchName || matchDesc || matchTags;
+        }
+
+        return true;
+      });
+
+      countLabel.textContent = `${filtered.length} 個`;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        empty.classList.remove('hidden');
+        return;
+      }
+
+      empty.classList.add('hidden');
+
+      grid.innerHTML = filtered.map(t => {
+        const isFav = favorites.includes(t.id);
+        return `
+          <div class="card-glass rounded-2xl p-5 flex flex-col justify-between group">
+            <div>
+              <!-- Top Row: Icon, Title, Fav & Badge -->
+              <div class="flex items-start justify-between gap-3 mb-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-12 h-12 rounded-xl bg-gradient-to-br ${t.color || 'from-indigo-500 to-purple-600'} flex items-center justify-center text-white text-xl shadow-md">
+                    <i class="fa-solid ${t.icon || 'fa-microchip'}"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-white text-base group-hover:text-indigo-300 transition flex items-center gap-2">
+                      ${t.name}
+                    </h4>
+                    <span class="text-[11px] px-2 py-0.5 rounded-md font-medium ${getBadgeColor(t.badge)}">
+                      ${t.badge || '實用推薦'}
+                    </span>
+                  </div>
+                </div>
+
+                <button onclick="toggleFav('${t.id}', event)" class="p-2 rounded-lg text-slate-400 hover:text-amber-400 transition" title="${isFav ? '取消收藏' : '加入收藏'}">
+                  <i class="${isFav ? 'fa-solid fa-star text-amber-400' : 'fa-regular fa-star'} text-base"></i>
+                </button>
+              </div>
+
+              <!-- Description -->
+              <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed mb-4">
+                ${t.desc}
+              </p>
+
+              <!-- Tags -->
+              <div class="flex flex-wrap gap-1.5 mb-5">
+                ${(t.tags || []).map(tag => `
+                  <span class="text-[10px] bg-slate-800/80 text-slate-400 px-2 py-0.5 rounded-md border border-slate-700/50">
+                    #${tag}
+                  </span>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- Bottom Actions -->
+            <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between gap-2">
+              <button onclick="copyLink('${t.url}', '${t.name}', event)" class="text-xs text-slate-400 hover:text-slate-200 transition py-1.5 px-2.5 rounded-lg hover:bg-slate-800/50 flex items-center gap-1.5">
+                <i class="fa-regular fa-copy"></i> 複製連結
+              </button>
+              <a href="${t.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-medium text-white bg-indigo-600/90 hover:bg-indigo-500 rounded-lg transition active:scale-95 shadow-sm">
+                前往官網 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function getBadgeColor(badge) {
+      if (!badge) return 'bg-slate-800 text-slate-300';
+      if (badge.includes('免費') || badge.includes('開源')) return 'bg-emerald-950/80 text-emerald-400 border border-emerald-800/50';
+      if (badge.includes('推薦') || badge.includes('熱門')) return 'bg-indigo-950/80 text-indigo-400 border border-indigo-800/50';
+      return 'bg-purple-950/80 text-purple-300 border border-purple-800/50';
+    }
+
+    // Prompt Helper
+    const promptTemplates = {
+      code_review: (topic, tone) => `你是一位擁有 15 年全端經驗的資深架構師。
+請針對以下需求或代碼進行深入的 Code Review：
+【需求目標】：${topic}
+【評估維度】：
+1. 程式碼架構與可維護性 (Clean Code)
+2. 潛在性能瓶頸與記憶體洩漏風險
+3. 安全性防護 (如 XSS、注入攻擊、權限邊界)
+4. 給出優化後的完整重構程式碼範例。
+風格要求：${tone === 'concise' ? '直接列出重點與重構代碼' : '詳細給予解釋與原理解說'}。`,
+
+      write_article: (topic, tone) => `你是一位頂級數位行銷文案總監。
+請為以下主題策劃一篇引人入勝的社群文案：
+【推廣主題】：${topic}
+【風格調性】：${tone === 'creative' ? '富有感染力、強烈好奇心與情緒共鳴' : '專業權威、邏輯嚴密、數據佐證'}
+【文案架構】：
+- 震撼開頭 (Hook)：3 秒抓住眼球的痛點金句
+- 核心亮點：條列 3 大無法拒絕的價值點
+- 行動呼籲 (CTA)：引導留言互動或點擊連結
+請同時提供 5 個高熱度 Instagram / Threads 標籤。`,
+
+      debug: (topic, tone) => `你是一位資深 Debug 專家。
+我遇到了以下問題/報錯：
+【問題描述】：${topic}
+請依序幫我排查：
+1. 可能引發此問題的 3 種核心原因（由最可能到次可能）
+2. 逐步檢查確認步驟（附帶排查指令或 log 印出建議）
+3. 具體修復方案代碼與預防再發生的最佳實踐。`,
+
+      midjourney: (topic, tone) => `Act as an expert Midjourney prompt engineer.
+Create a photorealistic, cinematic Masterpiece prompt based on: "${topic}".
+Include:
+- Subject & detailed composition
+- Lighting (volumetric, golden hour or cinematic studio)
+- Camera & lens specs (e.g. shot on 35mm lens, f/1.8, Hasselblad)
+- Atmosphere & rendering parameters (--ar 16:9 --v 6.1 --style raw)
+Provide the final prompt ready to paste into Discord.`,
+
+      translate: (topic, tone) => `你是一位專業的科技與商業領域同聲傳譯專家。
+請將以下內容翻譯並做深度本地化潤飾：
+【原文內容】：${topic}
+【翻譯要求】：
+1. 提供直譯版本（精準對應原意）
+2. 提供專業流暢的在地化潤飾版本（自然母語者習慣）
+3. 附上關鍵專業術語的對照說明與語意細節。`,
+
+      summary: (topic, tone) => `你是一位專為高階主管服務的情報分析師。
+請針對以下內容進行精華摘要：
+【內容材料】：${topic}
+【輸出結構】：
+1. 一句話總結（Executive Summary）
+2. 3 至 5 個核心關鍵要點（以條列形式）
+3. 立即行動建議清單（Action Items & Next Steps）。`
+    };
+
+    function generatePrompt() {
+      const task = document.getElementById('promptTask').value;
+      const topic = document.getElementById('promptTopic').value || '未填寫主題';
+      const tone = document.getElementById('promptTone').value;
+
+      const templateFn = promptTemplates[task] || promptTemplates['code_review'];
+      const result = templateFn(topic, tone);
+      document.getElementById('promptOutput').textContent = result;
+    }
+
+    function copyGeneratedPrompt() {
+      const text = document.getElementById('promptOutput').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('Prompt 已複製到剪貼簿！', 'fa-solid fa-copy');
+      });
+    }
+
+    // Modal
+    function openSubmitModal() {
+      document.getElementById('submitModal').classList.remove('hidden');
+    }
+
+    function closeSubmitModal() {
+      document.getElementById('submitModal').classList.add('hidden');
+    }
+
+    function handleSubmitedTool(e) {
+      e.preventDefault();
+      const name = document.getElementById('newToolName').value.trim();
+      const category = document.getElementById('newToolCategory').value;
+      const badge = document.getElementById('newToolBadge').value;
+      const url = document.getElementById('newToolUrl').value.trim();
+      const desc = document.getElementById('newToolDesc').value.trim();
+      const tagsRaw = document.getElementById('newToolTags').value.trim();
+      const tags = tagsRaw ? tagsRaw.split(',').map(s => s.trim()).filter(Boolean) : ['社群推薦'];
+
+      const newTool = {
+        id: 'custom_' + Date.now(),
+        name,
+        category,
+        badge,
+        color: 'from-indigo-600 to-pink-600',
+        icon: 'fa-star-half-stroke',
+        url,
+        desc,
+        tags
+      };
+
+      const stored = localStorage.getItem('ai_hub_custom_tools');
+      const customTools = stored ? JSON.parse(stored) : [];
+      customTools.unshift(newTool);
+      localStorage.setItem('ai_hub_custom_tools', JSON.stringify(customTools));
+
+      tools.unshift(newTool);
+      updateCounts();
+      renderTools();
+      closeSubmitModal();
+      document.getElementById('addToolForm').reset();
+      showToast(`成功新增 ${name}！`, 'fa-solid fa-check');
+    }
+
+    // Toast
+    let toastTimeout;
+    function showToast(message, iconClass) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      const toastIcon = document.getElementById('toastIcon');
+
+      toastMsg.textContent = message;
+      toastIcon.className = iconClass || 'fa-solid fa-circle-check text-indigo-400';
+
+      toast.classList.remove('translate-y-16', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.add('translate-y-16', 'opacity-0');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 2600);
+    }
+
+    // Start
+    window.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
